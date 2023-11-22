@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 
@@ -118,8 +118,9 @@ public class GamePanel extends JPanel implements Runnable{
 		}
 		
 		player.draw(g2);
-		if (projM.projectiles != null) {
-			projM.draw(g2);
+		
+		for (int i = 0; i < projM.projectiles.length; i++) {
+			projM.draw(g2, projM.projectiles[i]);
 		}
 		
 		ui.draw(g2);

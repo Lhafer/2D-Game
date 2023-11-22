@@ -22,7 +22,7 @@ public final int screenY;
 public int hasKey = 0;
 public int projSpeed = 20;
 public int deathCount = -1;
-
+int shotCount = 0;
 public Player(GamePanel gp, KeyHandler keyH) {
 
 	this.gp = gp;
@@ -73,8 +73,14 @@ public Player(GamePanel gp, KeyHandler keyH) {
 
 	public void update( ) {
 		collisionOn = false;
-		if(keyH.spacePressed == true) {
-			gp.projM.newProjectile();
+		if(shotCount >= 30) {
+			
+			if(keyH.spacePressed == true) {
+				gp.projM.newProjectile();
+				shotCount = 0;
+			}
+		} else {
+			shotCount++;
 		}
 		if(!keyH.directKeysPressed == true) {
 			direction = 0;

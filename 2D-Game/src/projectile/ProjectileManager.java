@@ -7,9 +7,6 @@ import main.GamePanel;
 public class ProjectileManager {
 	GamePanel gp;
 	public Projectile[] projectiles;
-	double drawInterval = 1000000000/2;
-	double delta = 0;
-	long lastTime = System.nanoTime();
 	long currentTime;
 	int count = 0;
 
@@ -20,19 +17,10 @@ public class ProjectileManager {
 	}
 	
 	public void newProjectile() {
-		currentTime = System.nanoTime();
-
-		delta += (currentTime - lastTime) / drawInterval;
-		lastTime = currentTime;
-
-			if(delta > 1) {
-				
+				if(count == 10) count = 0;
 				projectiles[count] = new Projectile(gp);
 				count++;
-				delta--;
-			}
-			if(count < 9) count = 0;
-		
+				System.out.println(count);
 	}
 	public void update() {
 		if(projectiles != null) {
@@ -55,25 +43,22 @@ public class ProjectileManager {
 					case 4:
 						projectiles[i].worldX += projectiles[i].speed;
 						break;
-					default:
-						break;
 					}
 				}
 			}
 		}
 	}
 	
-	public void draw(Graphics2D g2) {
+	public void draw(Graphics2D g2, Projectile projectile) {
 
-			for(int i = 0; i < projectiles.length; i++) {
-				if(projectiles[i] != null) {
-					int screenX = projectiles[i].worldX - gp.player.worldX + gp.player.screenX;
-					int screenY = projectiles[i].worldY - gp.player.worldY + gp.player.screenY;
-					
-						g2.drawImage(projectiles[i].image, screenX, screenY, 24, 24, null);
-				}
-					
+			if(projectile != null) {
+					int screenX = projectile.worldX - gp.player.worldX + gp.player.screenX;
+					int screenY = projectile.worldY - gp.player.worldY + gp.player.screenY;
+						g2.drawImage(projectile.image, screenX, screenY, 24, 24, null);
 			}
 	}
+					
+			
+
 	
 }

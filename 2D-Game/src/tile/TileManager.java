@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.awt.Graphics2D;
 import main.GamePanel;
+import main.UtilityTool;
+
+import java.awt.image.BufferedImage;
 
 public class TileManager {
 	GamePanel gp;
@@ -25,23 +28,25 @@ public class TileManager {
 	}
 	
 	public void getTileImage() {
-		try {
-			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/brick_1.png"));
-			tile[0].collision = true;
-			
-			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/lava.png"));
-			tile[4].collision = true;
-			
-			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/floor.png"));
+	
+			setupImg(0, "/tiles/brick_1.png", true);
+			setupImg(4, "/tiles/lava.png", true);
+			setupImg(5, "/tiles/floor.png", false);	
 
-		}catch(IOException e) {
+	}
+	public void setupImg(int index, String imgPath, boolean collision) {
+		UtilityTool uTool = new UtilityTool();
+		
+		tile[index] = new Tile();
+		try {
+			tile[index].image = ImageIO.read(getClass().getResourceAsStream(imgPath));
+			tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+			tile[index].collision = collision;
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
-	
 	public void loadMap(String mapPath) {
 		try {
 			InputStream is = getClass().getResourceAsStream(mapPath);
