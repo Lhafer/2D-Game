@@ -57,10 +57,10 @@ public Player(GamePanel gp, KeyHandler keyH) {
 
 		try {
 
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back2.png"));
+			down1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front1.png"));
+			down2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front2.png"));
+			up1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back1.png"));
+			up2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back2.png"));
 			left1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_left1.png"));
 			left2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_left2.png"));
 			right1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_right1.png"));
@@ -87,19 +87,42 @@ public Player(GamePanel gp, KeyHandler keyH) {
 		} else {
 			
 				if(keyH.upPressed == true) {
-					direction = 2;
+					directVect.y = -1;
+					directVect.x = 0;
+					direction = 1;
+					if(keyH.leftPressed == true && keyH.rightPressed == false) {
+						directVect.x = -1;
+						direction = 5;
+					}
+					if (keyH.rightPressed == true && keyH.leftPressed == false) {
+						directVect.x = 1;
+						direction = 6;
+					}
 				}
 				if(keyH.downPressed == true) {
-					direction = 1;
+					directVect.y = 1;
+					directVect.x = 0;
+					direction = 2;
+					if(keyH.leftPressed == true && keyH.rightPressed == false) {
+						directVect.x = -1;
+						direction = 7;
+					}
+					if (keyH.rightPressed == true && keyH.leftPressed == false) {
+						directVect.x = 1;
+						direction = 8;
+					}
 				}
-				if(keyH.leftPressed == true) {
+				if(keyH.leftPressed == true && keyH.upPressed == false  && keyH.downPressed == false) {
 					direction = 3;
+					directVect.y = 0;
+					directVect.x = -1;
 				}
-				if(keyH.rightPressed == true) {
+				if(keyH.rightPressed == true && keyH.downPressed == false && keyH.upPressed == false) {
 					direction = 4;
+					directVect.y = 0;
+					directVect.x = 1;
 				}
 				
-		
 		gp.colCheck.checkTile(this);
 		int objIndex = gp.colCheck.checkObject(this, true);
 		if (objIndex != 999) {
@@ -109,13 +132,31 @@ public Player(GamePanel gp, KeyHandler keyH) {
 		
 		if(collisionOn == false) {
 
-			
+			worldPos.move(this, directVect);
+			/*
 			switch(direction) {
 			case 1:
+				worldPos.y -= speed;
+				break;
+			case 5:
+				worldPos.y -= speed;
+				worldPos.x -= speed;
+				break;
+			case 6:
+				worldPos.y -= speed;
+				worldPos.x += speed;
+				break;
+				
+			case 2:
 				worldPos.y += speed;
 				break;
-			case 2:
-				worldPos.y -= speed;
+			case 7:
+				worldPos.y += speed;
+				worldPos.x -= speed;
+				break;
+			case 8:
+				worldPos.y += speed;
+				worldPos.x += speed;
 				break;
 			case 3:
 				worldPos.x -= speed;
@@ -126,8 +167,9 @@ public Player(GamePanel gp, KeyHandler keyH) {
 			default:
 				break;
 			}
+			*/
 		}
-		}
+		
 			spriteCounter++;
 			if(spriteCounter > 12) {
 				if(spriteNum == 1) {
@@ -139,7 +181,7 @@ public Player(GamePanel gp, KeyHandler keyH) {
 
 			}
 
-
+		}
 		
 	}
 	
@@ -176,7 +218,6 @@ public Player(GamePanel gp, KeyHandler keyH) {
 	}
 	
 	public void draw(Graphics2D g2) {
-
 		BufferedImage image = null;
 
 		switch(direction) {
@@ -191,7 +232,39 @@ public Player(GamePanel gp, KeyHandler keyH) {
 				image = up2;
 			}
 			break;
+		case 5:
+			if(spriteNum == 1) {
+				image = up1;
+			}
+			if(spriteNum == 2) {
+				image = up2;
+			}
+			break;
+		case 6:
+			if(spriteNum == 1) {
+				image = up1;
+			}
+			if(spriteNum == 2) {
+				image = up2;
+			}
+			break;
 		case 2:
+			if(spriteNum == 1) {
+				image = down1;
+			}
+			if(spriteNum == 2) {
+				image = down2;
+			}
+			break;
+		case 7:
+			if(spriteNum == 1) {
+				image = down1;
+			}
+			if(spriteNum == 2) {
+				image = down2;
+			}
+			break;
+		case 8:
 			if(spriteNum == 1) {
 				image = down1;
 			}

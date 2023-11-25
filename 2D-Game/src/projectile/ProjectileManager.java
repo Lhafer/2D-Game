@@ -20,7 +20,6 @@ public class ProjectileManager {
 				if(count == 10) count = 0;
 				projectiles[count] = new Projectile(gp);
 				count++;
-				System.out.println(count);
 	}
 	public void update() {
 		if(projectiles != null) {
@@ -32,10 +31,10 @@ public class ProjectileManager {
 						projectiles[i].worldPos.y += projectiles[i].speed;
 						break;
 					case 1:
-						projectiles[i].worldPos.y += projectiles[i].speed;
+						projectiles[i].worldPos.y -= projectiles[i].speed;
 						break;
 					case 2:
-						projectiles[i].worldPos.y -= projectiles[i].speed;
+						projectiles[i].worldPos.y += projectiles[i].speed;
 						break;
 					case 3:
 						projectiles[i].worldPos.x -= projectiles[i].speed;
@@ -52,9 +51,9 @@ public class ProjectileManager {
 	public void draw(Graphics2D g2, Projectile projectile) {
 
 			if(projectile != null) {
-					int screenX = projectile.worldPos.x - gp.player.worldPos.x + gp.player.screenX;
-					int screenY = projectile.worldPos.y - gp.player.worldPos.y + gp.player.screenY;
-						g2.drawImage(projectile.image, screenX, screenY, 24, 24, null);
+					int screenX = (int) (projectile.worldPos.x - gp.player.worldPos.x + gp.player.screenX);
+					int screenY = (int) (projectile.worldPos.y - gp.player.worldPos.y + gp.player.screenY);
+						g2.drawImage(projectile.image, screenX, screenY, gp.tileSize/4*3, gp.tileSize/4*3, null);
 			}
 	}
 					

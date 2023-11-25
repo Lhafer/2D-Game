@@ -19,8 +19,8 @@ public class SuperObject {
 	public void drawObjects(Graphics2D g2, GamePanel gp) {
 		solidArea.width = gp.tileSize;
 		solidArea.height = gp.tileSize;
-		int screenX = worldPos.x - gp.player.worldPos.x + gp.player.screenX;
-		int screenY = worldPos.y - gp.player.worldPos.y + gp.player.screenY;
+		int screenX = (int) (worldPos.x - gp.player.worldPos.x + gp.player.screenX);
+		int screenY = (int) (worldPos.y - gp.player.worldPos.y + gp.player.screenY);
 		if(worldPos.x < gp.player.worldPos.x + gp.player.screenX + gp.tileSize
 			&& worldPos.x > gp.player.worldPos.x - gp.player.screenX - gp.tileSize
 			&& worldPos.y > gp.player.worldPos.y - gp.player.screenY - gp.tileSize

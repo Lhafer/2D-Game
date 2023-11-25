@@ -90,8 +90,8 @@ public class TileManager {
 			
 			int x = col * gp.tileSize; //col of map  * size of tiles										  //it relative to the player 
 			int y = row * gp.tileSize;
-			int screenX = x - gp.player.worldPos.x + gp.player.screenX;
-			int screenY = y - gp.player.worldPos.y + gp.player.screenY;
+			int screenX = (int) (x - gp.player.worldPos.x + gp.player.screenX);
+			int screenY = (int) (y - gp.player.worldPos.y + gp.player.screenY);
 			if(x < gp.player.worldPos.x + gp.player.screenX + gp.tileSize
 				&& x > gp.player.worldPos.x - gp.player.screenX - gp.tileSize
 				&& y > gp.player.worldPos.y - gp.player.screenY - gp.tileSize
