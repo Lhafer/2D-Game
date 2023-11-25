@@ -23,19 +23,14 @@ public class Vector2D {
 		
 	}
 	public void normalize() {
-        double length = FastInverseSqrt(x * x + y * y);
+        double length = Math.sqrt(x * x + y * y);
 
         if (length != 0.0) {
-            this.x *= length;
-            this.y *= length;
+            this.x /= length;
+            this.y /= length;
         }
     }
-	
-	private static double FastInverseSqrt(double x) {
-        long longBits = Double.doubleToLongBits(x);
-        double y = Double.longBitsToDouble(0x5FE6EB50C7B537AAL - (longBits >> 1));
-        return y * (1.5 - 0.5 * x * y * y);
-    }
+
 	
 	public String toString() {
         return "(" + x + ", " + y + ")";
