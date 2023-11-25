@@ -15,25 +15,25 @@ public class AssetSetter {
 	
 	public void setObject() {
 		gp.obj[0] = new Eye_Obj();
-		gp.obj[0].worldX = 51 * gp.tileSize;
-		gp.obj[0].worldY = 51 * gp.tileSize;
+		gp.obj[0].worldPos.x = 51 * gp.tileSize;
+		gp.obj[0].worldPos.y = 51 * gp.tileSize;
 		
 		gp.obj[1] = new Heart_Obj();
-		gp.obj[1].worldX = 50 * gp.tileSize;
-		gp.obj[1].worldY = 50 * gp.tileSize;
+		gp.obj[1].worldPos.x = 50 * gp.tileSize;
+		gp.obj[1].worldPos.y = 50 * gp.tileSize;
 	
 		
 		gp.obj[2] = new Goupta_Obj();
-		gp.obj[2].worldX = 40 * gp.tileSize;
-		gp.obj[2].worldY = 40 * gp.tileSize;
+		gp.obj[2].worldPos.x = 40 * gp.tileSize;
+		gp.obj[2].worldPos.y = 40 * gp.tileSize;
 		
 		gp.obj[3] = new Battery_Obj();
-		gp.obj[3].worldX = 80 * gp.tileSize;
-		gp.obj[3].worldY = 50 * gp.tileSize;
+		gp.obj[3].worldPos.x = 80 * gp.tileSize;
+		gp.obj[3].worldPos.y = 50 * gp.tileSize;
 		
 		gp.obj[4] = new Fuzz_Obj();
-		gp.obj[4].worldX = 90 * gp.tileSize;
-		gp.obj[4].worldY = 50 * gp.tileSize;
+		gp.obj[4].worldPos.x = 90 * gp.tileSize;
+		gp.obj[4].worldPos.y = 50 * gp.tileSize;
 		
 		
 	}

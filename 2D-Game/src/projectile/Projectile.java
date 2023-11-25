@@ -1,7 +1,7 @@
 package projectile;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
+import main.Vector2D;
 import javax.imageio.ImageIO;
 
 import main.GamePanel;
@@ -12,8 +12,7 @@ public class Projectile {
 	public int speed;
 	public int dmg = 4;
 	public Rectangle solidArea = new Rectangle(12, 12, 24 , 24);
-	public int worldX;
-	public int worldY;
+	public Vector2D worldPos = new Vector2D();
 	public int direction;
 	public int solidAreaDefaultX = 12;
 	public int solidAreaDefaultY = 12;
@@ -29,24 +28,24 @@ public class Projectile {
 		
 		switch(direction) {
 		case 0:
-			worldX = gp.player.worldX;
-			worldY = gp.player.worldY + gp.tileSize;
+			worldPos.x = gp.player.worldPos.x;
+			worldPos.y = gp.player.worldPos.y + gp.tileSize;
 			break;
 		case 2:
-			worldX = gp.player.worldX;
-			worldY = gp.player.worldY - gp.tileSize;
+			worldPos.x = gp.player.worldPos.x;
+			worldPos.y = gp.player.worldPos.y - gp.tileSize;
 			break;
 		case 1:
-			worldX = gp.player.worldX;
-			worldY = gp.player.worldY + gp.tileSize;
+			worldPos.x = gp.player.worldPos.x;
+			worldPos.y = gp.player.worldPos.y + gp.tileSize;
 			break;
 		case 3:
-			worldX = gp.player.worldX - gp.tileSize;
-			worldY = gp.player.worldY;
+			worldPos.x = gp.player.worldPos.x - gp.tileSize;
+			worldPos.y = gp.player.worldPos.y;
 			break;
 		case 4:
-			worldX = gp.player.worldX + gp.tileSize;
-			worldY = gp.player.worldY;
+			worldPos.x = gp.player.worldPos.x + gp.tileSize;
+			worldPos.y = gp.player.worldPos.y;
 			break;
 		}
 		

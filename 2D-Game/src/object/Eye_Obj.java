@@ -28,12 +28,12 @@ public class Eye_Obj extends SuperObject{
 		
 		solidArea.width = gp.tileSize;
 		solidArea.height = gp.tileSize;
-		int screenX = worldX - gp.player.worldX + gp.player.screenX;
-		int screenY = worldY - gp.player.worldY + gp.player.screenY;
-		if(worldX < gp.player.worldX + gp.player.screenX + gp.tileSize
-			&& worldX > gp.player.worldX - gp.player.screenX - gp.tileSize
-			&& worldY > gp.player.worldY - gp.player.screenY - gp.tileSize
-			&& worldY < gp.player.worldY + gp.player.screenY + gp.tileSize) { //check that the tiles we 
+		int screenX = worldPos.x - gp.player.worldPos.x + gp.player.screenX;
+		int screenY = worldPos.y - gp.player.worldPos.y + gp.player.screenY;
+		if(worldPos.x < gp.player.worldPos.x + gp.player.screenX + gp.tileSize
+			&& worldPos.x > gp.player.worldPos.x - gp.player.screenX - gp.tileSize
+			&& worldPos.y > gp.player.worldPos.y - gp.player.screenY - gp.tileSize
+			&& worldPos.y < gp.player.worldPos.y + gp.player.screenY + gp.tileSize) { //check that the tiles we 
 																	//are drawing are within
 																	//our screen so that we dont draw
 																	//tiles we cant see to save on processing power

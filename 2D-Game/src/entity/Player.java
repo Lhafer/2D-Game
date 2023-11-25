@@ -48,8 +48,8 @@ public Player(GamePanel gp, KeyHandler keyH) {
 	public void setDefaultValues() {
 		deathCount++;
 		hasKey = 0;
-		worldX = (104 * gp.tileSize)/2;
-		worldY = (104 * gp.tileSize)/2;
+		worldPos.x = (104 * gp.tileSize)/2;
+		worldPos.y = (104 * gp.tileSize)/2;
 		speed = 4;
 		direction = 0;
 	}
@@ -112,16 +112,16 @@ public Player(GamePanel gp, KeyHandler keyH) {
 			
 			switch(direction) {
 			case 1:
-				worldY += speed;
+				worldPos.y += speed;
 				break;
 			case 2:
-				worldY -= speed;
+				worldPos.y -= speed;
 				break;
 			case 3:
-				worldX -= speed;
+				worldPos.x -= speed;
 				break;
 			case 4:
-				worldX += speed;
+				worldPos.x += speed;
 				break;
 			default:
 				break;

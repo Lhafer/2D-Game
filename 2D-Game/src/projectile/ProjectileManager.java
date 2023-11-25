@@ -29,19 +29,19 @@ public class ProjectileManager {
 				if(projectiles[i] != null) {
 					switch(projectiles[i].direction) {
 					case 0:
-						projectiles[i].worldY += projectiles[i].speed;
+						projectiles[i].worldPos.y += projectiles[i].speed;
 						break;
 					case 1:
-						projectiles[i].worldY += projectiles[i].speed;
+						projectiles[i].worldPos.y += projectiles[i].speed;
 						break;
 					case 2:
-						projectiles[i].worldY -= projectiles[i].speed;
+						projectiles[i].worldPos.y -= projectiles[i].speed;
 						break;
 					case 3:
-						projectiles[i].worldX -= projectiles[i].speed;
+						projectiles[i].worldPos.x -= projectiles[i].speed;
 						break;
 					case 4:
-						projectiles[i].worldX += projectiles[i].speed;
+						projectiles[i].worldPos.x += projectiles[i].speed;
 						break;
 					}
 				}
@@ -52,8 +52,8 @@ public class ProjectileManager {
 	public void draw(Graphics2D g2, Projectile projectile) {
 
 			if(projectile != null) {
-					int screenX = projectile.worldX - gp.player.worldX + gp.player.screenX;
-					int screenY = projectile.worldY - gp.player.worldY + gp.player.screenY;
+					int screenX = projectile.worldPos.x - gp.player.worldPos.x + gp.player.screenX;
+					int screenY = projectile.worldPos.y - gp.player.worldPos.y + gp.player.screenY;
 						g2.drawImage(projectile.image, screenX, screenY, 24, 24, null);
 			}
 	}

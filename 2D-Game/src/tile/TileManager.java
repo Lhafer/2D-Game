@@ -9,7 +9,6 @@ import java.awt.Graphics2D;
 import main.GamePanel;
 import main.UtilityTool;
 
-import java.awt.image.BufferedImage;
 
 public class TileManager {
 	GamePanel gp;
@@ -91,12 +90,12 @@ public class TileManager {
 			
 			int x = col * gp.tileSize; //col of map  * size of tiles										  //it relative to the player 
 			int y = row * gp.tileSize;
-			int screenX = x - gp.player.worldX + gp.player.screenX;
-			int screenY = y - gp.player.worldY + gp.player.screenY;
-			if(x < gp.player.worldX + gp.player.screenX + gp.tileSize
-				&& x > gp.player.worldX - gp.player.screenX - gp.tileSize
-				&& y > gp.player.worldY - gp.player.screenY - gp.tileSize
-				&& y < gp.player.worldY + gp.player.screenY + gp.tileSize) { //check that the tiles we 
+			int screenX = x - gp.player.worldPos.x + gp.player.screenX;
+			int screenY = y - gp.player.worldPos.y + gp.player.screenY;
+			if(x < gp.player.worldPos.x + gp.player.screenX + gp.tileSize
+				&& x > gp.player.worldPos.x - gp.player.screenX - gp.tileSize
+				&& y > gp.player.worldPos.y - gp.player.screenY - gp.tileSize
+				&& y < gp.player.worldPos.y + gp.player.screenY + gp.tileSize) { //check that the tiles we 
 																		//are drawing are within
 																		//our screen so that we dont draw
 																		//tiles we cant see to save on processing power

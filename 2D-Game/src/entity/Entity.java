@@ -2,8 +2,10 @@ package entity;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
+import main.Vector2D;
+
 public class Entity {
-	public int worldX, worldY;
+	public Vector2D worldPos = new Vector2D();
 	public int speed;
 
 	public BufferedImage idle, up1, up2, down1, down2, left1, left2, right1, right2;
