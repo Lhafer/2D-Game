@@ -80,7 +80,7 @@ public class Entity {
 				direction = 2;
 			}
 			if(counter <= 125) {
-					directVect.x = -1;
+				directVect.x = -1;
 				directVect.y = 1;
 				direction = 7;
 			}
