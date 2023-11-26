@@ -4,6 +4,7 @@ import object.Eye_Obj;
 import object.Heart_Obj;
 import object.Goupta_Obj;
 import object.Fuzz_Obj;
+import entity.NPC_1;
 import object.Battery_Obj;
 
 public class AssetSetter {
@@ -35,6 +36,14 @@ public class AssetSetter {
 		gp.obj[4].worldPos.x = 90 * gp.tileSize;
 		gp.obj[4].worldPos.y = 50 * gp.tileSize;
 		
+		
+	}
+	
+	public void setNPC() {
+		gp.npc[0] = new NPC_1(gp);
+
+		gp.npc[0].worldPos.x = 52 * gp.tileSize;
+		gp.npc[0].worldPos.y = 52 * gp.tileSize;
 		
 	}
 	

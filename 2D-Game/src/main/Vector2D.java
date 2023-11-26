@@ -18,8 +18,11 @@ public class Vector2D {
 	}
 	public void move(Entity entity, Vector2D direct) {
 		direct.normalize();
-		System.out.println(direct);
-		entity.worldPos = entity.worldPos.add(direct.times(entity.speed));
+		direct = direct.times(entity.speed);
+		direct.x = Math.round(direct.x);
+		direct.y = Math.round(direct.y);
+		entity.worldPos = entity.worldPos.add(direct);
+		
 		
 	}
 	public void normalize() {

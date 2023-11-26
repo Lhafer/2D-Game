@@ -1,23 +1,20 @@
 package entity;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
 
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 public class Player extends Entity{
 
-GamePanel gp;
 KeyHandler keyH;
+
 
 public final int screenX;
 public final int screenY;
-
 
 public int hasKey = 0;
 public int projSpeed = 20;
@@ -25,7 +22,7 @@ public int deathCount = -1;
 int shotCount = 0;
 public Player(GamePanel gp, KeyHandler keyH) {
 
-	this.gp = gp;
+	super(gp);
 	this.keyH = keyH;
 	
 
@@ -45,6 +42,20 @@ public Player(GamePanel gp, KeyHandler keyH) {
 	getPlayerImage();
 	}
 
+	public void getPlayerImage() {
+	
+		down1 = setupImg("/player/dude_front1.png");
+		down2 = setupImg("/player/dude_front2.png");
+		up1 = setupImg("/player/dude_back1.png");
+		up2 = setupImg("/player/dude_back2.png");
+		left1 = setupImg("/player/dude_left1.png");
+		left2 = setupImg("/player/dude_left2.png");
+		right1 = setupImg("/player/dude_right1.png");
+		right2 = setupImg("/player/dude_right2.png");
+		idle = setupImg("/player/dude_idle.png");
+	
+	}
+	
 	public void setDefaultValues() {
 		deathCount++;
 		hasKey = 0;
@@ -53,23 +64,7 @@ public Player(GamePanel gp, KeyHandler keyH) {
 		speed = 4;
 		direction = 0;
 	}
-	public void getPlayerImage() {
-
-		try {
-
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_front2.png"));
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_back2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_left1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_left2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/dude_right1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/dude_right2.png"));
-			idle = ImageIO.read(getClass().getResourceAsStream("/player/dude_idle.png"));
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
+	
 
 	public void update( ) {
 		collisionOn = false;
@@ -289,6 +284,25 @@ public Player(GamePanel gp, KeyHandler keyH) {
 			}
 			break;
 		}
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		spriteCounter++;
+		if(spriteCounter > 12) {
+			if(spriteNum == 1) {
+				spriteNum = 2;
+			}else if(spriteNum == 2) {
+				spriteNum = 1;
+			}
+			spriteCounter = 0;
+
+		}
+	//check that the tiles we 
+																	//are drawing are within
+																	//our screen so that we dont draw
+																	//tiles we cant see to save on processing power
+			
+			
+			g2.drawImage(image, screenX, screenY, null);
+			
+		
 	}
+	
 }

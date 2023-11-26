@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import object.SuperObject;
 import projectile.ProjectileManager;
+import entity.Entity;
 import entity.Player;
 import tile.TileManager;
 
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public SuperObject obj[] = new SuperObject[15];
 	public AssetSetter assSet = new AssetSetter(this);
 	public Player player = new Player(this,keyH);
+	public Entity npc[] = new Entity[10];
 	
 	
 	public GamePanel () {
@@ -60,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
 	public void gameSetup() {
 		
 		assSet.setObject();
-		
+		assSet.setNPC();
 		playMusic(2);
 		
 	}
@@ -102,6 +104,9 @@ public class GamePanel extends JPanel implements Runnable{
 
 		player.update();
 		projM.update();
+		for(int i = 0; i < npc.length; i++) {
+			if(npc[i]!= null) npc[i].update();
+		}
 		
 
 	}
@@ -116,13 +121,15 @@ public class GamePanel extends JPanel implements Runnable{
 		for(int i = 0; i < obj.length; i++) {
 			if(obj[i] != null) obj[i].drawObjects(g2, this);
 		}
+		for(int i = 0; i < npc.length; i++) {
+			if(npc[i] != null) npc[i].draw(g2);
+		}
 		
-		player.draw(g2);
 		
 		for (int i = 0; i < projM.projectiles.length; i++) {
 			projM.draw(g2, projM.projectiles[i]);
 		}
-		
+		player.draw(g2);
 		ui.draw(g2);
 		
 		g2.dispose();

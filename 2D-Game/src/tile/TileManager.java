@@ -101,7 +101,7 @@ public class TileManager {
 																		//tiles we cant see to save on processing power
 				
 				
-				g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+				g2.drawImage(tile[tileNum].image, screenX, screenY, null);
 				
 			}
 			col++;
