@@ -9,10 +9,10 @@ public class CollisionChecker {
 		this.gp = gp;
 	}
 	public void checkTile(Entity entity) {
-		int entityLeftWorldX= (int) (entity.worldPos.x + entity.solidArea.x);
-		int entityRightWorldX = (int) (entity.worldPos.x + entity.solidArea.x + entity.solidArea.width);
-		int entityTopWorldY = (int) (entity.worldPos.y + entity.solidArea.y);
-		int entityBottomWorldY = (int) (entity.worldPos.y + entity.solidArea.y + entity.solidArea.height);
+		int entityLeftWorldX= (int) (entity.worldPos.x) + entity.solidArea.x;
+		int entityRightWorldX = (int) (entity.worldPos.x) + entity.solidArea.x + entity.solidArea.width;
+		int entityTopWorldY = (int) (entity.worldPos.y )+ entity.solidArea.y;
+		int entityBottomWorldY = (int) (entity.worldPos.y) + entity.solidArea.y + entity.solidArea.height;
 		
 		int entityLeftCol = entityLeftWorldX/gp.tileSize;
 		int entityRightCol = entityRightWorldX/gp.tileSize;
@@ -22,7 +22,20 @@ public class CollisionChecker {
 		int tileNum1, tileNum2;
 		
 		switch(entity.direction) {
-		
+		case 1:
+			entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
+			
+			tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+			tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+			
+			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+				entity.collisionOn = true;
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
+					gp.player.setDefaultValues();
+					gp.assSet.setObject();
+				}
+			}
+			break;
 		case 2:
 			entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
 			
@@ -31,7 +44,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
@@ -46,7 +59,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
@@ -61,26 +74,13 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
 			}
 			break;
-		case 1:
-			entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
-			
-			tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-			tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-			
-			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
-				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
-					gp.player.setDefaultValues();
-					gp.assSet.setObject();
-				}
-			}
-			break;
+		
 		case 5:
 			entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
 			entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
@@ -90,7 +90,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
@@ -105,7 +105,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
@@ -119,7 +119,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}
@@ -134,7 +134,7 @@ public class CollisionChecker {
 			
 			if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
 				entity.collisionOn = true;
-				if(tileNum1 == 4 || tileNum2 == 4) {
+				if((tileNum1 == 4 || tileNum2 == 4) && entity == gp.player) {
 					gp.player.setDefaultValues();
 					gp.assSet.setObject();
 				}

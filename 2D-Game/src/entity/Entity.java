@@ -58,43 +58,46 @@ public class Entity {
 		
 		if(imgSwitch == 180) {
 			imgSwitch = 0;
-			int counter = rand.nextInt(200)+1;
+			int counter = rand.nextInt(100)+1;
 			
-			if(counter <= 25) {
-				directVect.y = -1;
+			if(counter <= 100) {
+				directVect.y = 1;
 				directVect.x = 0;
-				direction = 1;
+				direction = 2;
 			}
-			if(counter <= 50) {
+			/*
+			if(counter <= 175) {
 				directVect.x = -1;
 				directVect.y = -1;
 				direction = 5;
 			}
-			if(counter <= 75) {
+			if(counter <= 150) {
 				directVect.x = 1;
 				direction = 6;
 			}
-			if(counter <= 100) {
+			
+			if(counter <= 75) {
 				directVect.x = 0;
 				directVect.y = -1;
 				direction = 2;
 			}
-			if(counter <= 125) {
+			if(counter <= 100) {
 				directVect.x = -1;
 				directVect.y = 1;
 				direction = 7;
 			}
-			if(counter <= 150) {
-				directVect.x = 1;
-				directVect.y = 1;
-				direction = 8;
+			*/
+			if(counter <= 75) {
+				directVect.x = 0;
+				directVect.y = -1;
+				direction = 1;
 			}
-			if(counter <= 175) {
+			if(counter <= 50) {
 				directVect.x = -1;
 				directVect.y = 0;
 				direction = 3;
 			}
-			if(counter <= 200) {
+			if(counter <= 25) {
 				directVect.x = 1;
 				directVect.y = 0;
 				direction = 4;
